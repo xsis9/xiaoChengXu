@@ -1,5 +1,9 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/lifehelp/lifehelp",
+    "pages/shopping/shopping",
+    "pages/myself/myself",
     "pages/index/index",
     "pages/logs/logs"
   ],
@@ -7,6 +11,37 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "Weixin",
     "navigationBarBackgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1AAD19",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/home_selected.png"
+      },
+      {
+        "pagePath": "pages/lifehelp/lifehelp",
+        "text": "生活帮助",
+        "iconPath": "images/tabbar/lifehelp.png",
+        "selectedIconPath": "images/tabbar/lifehelp_selected.png"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "text": "购物",
+        "iconPath": "images/tabbar/shopping.png",
+        "selectedIconPath": "images/tabbar/shopping_selected.png"
+      },
+      {
+        "pagePath": "pages/myself/myself",
+        "text": "我的",
+        "iconPath": "images/tabbar/myself.png",
+        "selectedIconPath": "images/tabbar/myself_selected.png"
+      }
+    ]
   },
   "style": "v2",
   "componentFramework": "glass-easel",

@@ -1,1 +1,91 @@
-/* pages/myself/myself.wxss */
+/* 外层容器 */
+.container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+/* 登录头部容器 */
+.login-header {
+  width: 100%;
+  padding-left: 20rpx; /* 控制左间距 */
+  box-sizing: border-box; /* 包含padding */
+}
+
+/* 内容横向排列 */
+.header-content {
+  display: flex;
+  align-items: center;
+  width: fit-content; /* 关键：让内容自适应宽度 */
+}
+
+/* 头像样式 */
+.user-head {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
+}
+
+/* 文字样式 */
+.user-title {
+  font-size: 32rpx;
+  color: #333;
+  white-space: nowrap; /* 防止文字换行 */
+}
+
+.order-status {
+  background-color: #ffffff;
+  margin-top: 10px;
+  padding: 15px;
+}
+
+/* 订单项容器 - 改为Flex布局 */
+.order-item {
+  display: flex;
+  justify-content: space-between; /* 两端对齐 */
+  align-items: center; /* 垂直居中 */
+  padding: 15px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* 左侧标题 */
+.order-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 查看全部链接 */
+.view-all {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #999;
+}
+
+.view-all image {
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+}
+
+.order-tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.inquiry-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 10rpx; /* 调整上下间距 */
+  border-bottom: 1rpx solid #f0f0f0;
+  margin-left: 10rpx; /* 整体向左偏移 */
+}

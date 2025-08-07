@@ -1,2 +1,41 @@
-<!--pages/myself/myself.wxml-->
-<text>pages/myself/myself.wxml</text>
+<view class="container">
+  <!-- 未登录状态 -->
+  <view class="login-header" wx:if="{{!isLogin}}" bindtap="onLoginTap">
+    <view class="header-content header-left">  <!-- 添加 header-left 类 -->
+      <image src="{{userInfo.headPic || '/pages/image/1.png'}}" class="user-head" mode="aspectFill" />
+      <view class="user-title">{{userInfo.username || '点击登录'}}</view>
+    </view>
+  </view>
+
+  <!-- 已登录状态 -->
+  <view class="login-header" wx:else bind:tap="showProfileDialog">
+    <view class="header-content header-left">  <!-- 添加 header-left 类 -->
+      <image 
+        src="{{userInfo.headPic ? (userInfo.headPic === userInfo.wwHeadPic ? userInfo.wwHeadPic : basePhotoUrl + userInfo.headPic) : '/pages/image/1.png'}}" 
+        class="user-head" 
+        mode="aspectFill" 
+        bind:tap="previewHead" />
+      <view class="user-title">{{userInfo.username || '未命名用户'}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 订单状态 -->
+<view class="order-status">
+    <view class="order-item">
+      <text>我的订单</text>
+      <view class="tab" bindtap="goToOrderPage" data-type="0">查看全部></view>
+    </view>
+    <view class="order-tabs">
+      <view class="tab" bindtap="goToOrderPage" data-type="1">待付款</view>
+      <view class="tab" bindtap="goToOrderPage" data-type="2">待发货</view>
+      <view class="tab" bindtap="goToOrderPage" data-type="3">待收货/服务中</view>
+      <view class="tab" bindtap="goToOrderPage">售后服务</view>
+    </view>
+  </view>
+
+<view class="inquiry-item" bindtap="goToAskPage" >我的打听></view>
+<view class="inquiry-item" bindtap="goToReturnPage" >回复我的></view>
+<view class="inquiry-item" bindtap="goToConcessionPage" >我的优惠></view>
+<view class="inquiry-item" bindtap="goToPositionPage" >我的地址></view>
+<view class="inquiry-item" >联系客服></view>

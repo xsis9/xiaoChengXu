@@ -1,0 +1,5 @@
+<!--pages/return/return.wxml-->
+
+<view class="container">
+  <image class="image" src="/images/empty-order.png" mode="widthFix" />
+</view>

@@ -1,0 +1,46 @@
+/* pages/order/order.wxss */
+page {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* 使筛选栏紧贴顶部 */
+.tab-bar {
+  width: 100%;
+  white-space: nowrap;
+  background-color: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.tab-item {
+  display: inline-block;
+  padding: 8px 15px;
+  margin: 0 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.tab-item.active {
+  color: #07C160 !important;              /* 微信绿色 */
+  border-bottom: 3px solid #07C160 !important; /* 加粗下划线 */
+  font-weight: bold;                     /* 加粗文字 */
+  transform: scale(1.05);                /* 轻微放大效果 */
+  transition: all 0.3s ease; 
+}
+
+.order-list {
+  flex: 1;
+  overflow-y: auto;
+}

@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isLogin: false,
+    basePhotoUrl: 'https://your-cdn.com/', // 必须定义
+    userInfo: {
+      headPic: '',
+      wwHeadPic: '',
+      username: ''
+    }
+    
   },
 
   /**
@@ -62,5 +69,80 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  onLoginTap: function() {
+    wx.getUserProfile({
+      desc: '获取用户相关信息',
+      success: res => {
+        if (res.errMsg === "getUserProfile:ok") {
+          let username = res.userInfo.nickName;
+          let headPic = res.userInfo.avatarUrl;
+          wx.login({
+            success: async res => {
+              if (res.errMsg === "login:ok") {
+                const response = await myRequest ({
+                  url: api.BASE_URL + "/app/user/wx_login",
+                  method:  "POST",
+                  data: {
+                    wxHeadPic: headPic,
+                    wxUsername: username,
+                    code: res.code,
+                  }
+                });
+                if (response.data.code === 0) {
+                  Notify({type: "success", message: response.data.msg, duration: 1000 });
+                  Cache.setCache(getApp().globalDate.SESSION_KEY_LOGIN_USER, response.data.data.token, 3600);
+                  this.setData({
+                    userInfo: response.data.data,
+                    editUser: response.data.data,
+                    isLogin: true,
+                  });
+                } else {
+                  Notify({ type: "danger", message: response.data.msg, duration: 2000 })
+                }
+              } else {
+                wx.showToast({
+                  icon: "error",
+                  title: "登录失败",
+                })
+              }
+            },
+          })
+        }
+      }
+    })
+  },
+
+  goToOrderPage: function(e) {
+    const tabIndex = e.currentTarget.dataset.tab || 0;
+    wx.navigateTo({
+      url: `/pages/order/order?tab=${tabIndex}`
+    });
+  },
+
+  goToAskPage: function() {
+    wx.navigateTo({
+      url: `/pages/ask/ask`
+    });
+  },
+
+  goToReturnPage: function() {
+    wx.navigateTo({
+      url: `/pages/return/return`
+    });
+  },
+
+  goToConcessionPage: function() {
+    wx.navigateTo({
+      url: `/pages/concession/concession`
+    });
+  },
+
+  goToPositionPage: function() {
+    wx.navigateTo({
+      url: `/pages/position/position`
+    });
   }
 })
+
+

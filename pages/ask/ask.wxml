@@ -1,0 +1,31 @@
+<!-- pages/inquiry/inquiry.wxml -->
+<view class="container">
+
+  <!-- 标签切换 -->
+  <view class="tabs">
+    <view class="tab {{activeTab === 0 ? 'active' : ''}}" 
+          bindtap="switchTab" data-index="0">我发布的</view>
+    <view class="tab {{activeTab === 1 ? 'active' : ''}}" 
+          bindtap="switchTab" data-index="1">我的收藏</view>
+  </view>
+
+  <!-- 内容列表 -->
+  <scroll-view class="list" scroll-y bindscrolltolower="loadMore">
+    <block wx:for="{{listData}}" wx:key="id">
+      <view class="item">
+        <image class="item-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="item-content">
+          <text class="item-title">{{item.title}}</text>
+          <text class="item-desc">{{item.desc}}</text>
+          <text class="item-time">{{item.time}}</text>
+        </view>
+        <view class="item-status">{{item.status}}</view>
+      </view>
+    </block>
+    
+    <!-- 加载提示 -->
+    <view class="load-more" wx:if="{{hasMore}}">
+      <text>上拉显示更多</text>
+    </view>
+  </scroll-view>
+</view>

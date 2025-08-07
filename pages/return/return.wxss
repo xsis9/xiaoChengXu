@@ -1,0 +1,13 @@
+.container {
+  position: relative;
+  height: 100vh;
+}
+
+.image {
+  position: absolute;
+  top: 20rpx; /* 靠上距离 */
+  left: 50%;
+  transform: translateX(-50%); /* 水平居中 */
+  width: 1000rpx;
+  height: 1000rpx;
+}

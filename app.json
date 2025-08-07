@@ -5,7 +5,15 @@
     "pages/shopping/shopping",
     "pages/myself/myself",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/login/login",
+    "pages/order/order",
+    "pages/ask/ask",
+    "pages/return/return",
+    "pages/consession/consession",
+    "pages/concession/concession",
+    "pages/position/position",
+    "pages/concession/list"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,0 +1,37 @@
+<view class="detail-container">
+  <!-- <image class="detail-image" src="{{currentSpot.image}}" mode="widthFix" /> -->
+  <!-- 在 .wxml 文件中 -->
+<!-- .wxml -->
+ <!-- .wxml -->
+<!-- 在 .wxml 文件中 -->
+<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="3000" duration="500" style="height: 600rpx;">
+  <block wx:for="{{currentSpot.images}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" mode="aspectFill" style="width:100%;height:100%;"/>
+    </swiper-item>
+  </block>
+</swiper>
+  <view class="detail-content">
+    <view class="detail-header">
+      <text class="detail-title">{{currentSpot.name}}</text>
+      <text class="detail-tag {{currentSpot.type}}">
+        {{currentSpot.type === 'food' ? '特色美食' : '旅游景点'}}
+      </text>
+    </view>
+
+    <block wx:for="{{currentSpot.content}}" wx:key="index">
+      <view class="detail-section">
+        <text class="section-title">{{item.title}}</text>
+        <text class="section-content">{{item.intro}}</text>
+      </view>
+    </block>
+    <!-- <view wx:if="{{currentSpot.tips}}" class="detail-section">
+      <text class="section-title">小贴士</text>
+      <text class="section-content tips">{{currentSpot.tips}}</text>
+    </view> -->
+  </view>
+  
+  <view class="detail-footer">
+    <button class="back-btn" bindtap="navigateBack">返回列表</button>
+  </view>
+</view>

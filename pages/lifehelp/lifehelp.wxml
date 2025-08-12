@@ -1,2 +1,19 @@
 <!--pages/lifehelp/lifehelp.wxml-->
-<text>pages/lifehelp/lifehelp.wxml</text>
+<view class="container">
+  <view class="header">
+    <text class="title">探索小镇魅力</text>
+    <text class="subtitle">九大必去美食景点</text>
+  </view>
+
+  <view class="grid">
+    <block wx:for="{{spots}}" wx:key="id">
+      <view class="card" bindtap="navigateToDetail" data-id="{{item.id}}">
+        <image class="card-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="card-content">
+          <text class="card-title">{{item.name}}</text>
+          <text class="card-tag {{item.type}}">{{item.type === 'food' ? '美食' : '景点'}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

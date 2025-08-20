@@ -14,7 +14,9 @@
     "pages/concession/concession",
     "pages/position/position",
     "pages/concession/list",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/index/tele/tele",
+    "pages/tele/tele"
   ],
   "window": {
     "navigationBarTextStyle": "black",

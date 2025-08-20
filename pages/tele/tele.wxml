@@ -1,0 +1,13 @@
+<view class="card">
+  <view class="title">联系电话</view>
+
+  <view class="phone-row" bindtap="callPhone">
+    <text class="phone-label">客服热线</text>
+    <text class="phone-number">xxxxxxxxx</text>
+  </view>
+
+  <view class="phone-row" bindtap="callPhone">
+    <text class="phone-label">技术支持</text>
+    <text class="phone-number">xxxxxxxxx</text>
+  </view>
+</view>

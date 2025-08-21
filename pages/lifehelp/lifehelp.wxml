@@ -1,19 +1,37 @@
-<!--pages/lifehelp/lifehelp.wxml-->
+<!-- index.wxml -->
 <view class="container">
-  <view class="header">
-    <text class="title">探索小镇魅力</text>
-    <text class="subtitle">九大必去美食景点</text>
-  </view>
+  <!-- <view class="header">
+    <text class="title">临河生活助手</text>
+    <text class="subtitle">让生活更便捷</text>
+  </view> -->
 
-  <view class="grid">
-    <block wx:for="{{spots}}" wx:key="id">
-      <view class="card" bindtap="navigateToDetail" data-id="{{item.id}}">
-        <image class="card-image" src="{{item.image}}" mode="aspectFill" />
-        <view class="card-content">
-          <text class="card-title">{{item.name}}</text>
-          <text class="card-tag {{item.type}}">{{item.type === 'food' ? '美食' : '景点'}}</text>
-        </view>
-      </view>
-    </block>
+  <view class="category-container">
+    <view class="category-card" bindtap="navigateToFood">
+      <image src="/images/food.jpg" class="category-bg-image" mode="aspectFill"></image>
+      <view class="card-overlay"></view>
+      <text class="category-name">美食</text>
+      <text class="category-desc">精选当地特色美食</text>
+    </view>
+    
+    <view class="category-card" bindtap="navigateToHotel">
+      <image src="/images/hotel.jpg" class="category-bg-image" mode="aspectFill"></image>
+      <view class="card-overlay"></view>
+      <text class="category-name">住宿</text>
+      <text class="category-desc">舒适温馨的住宿环境</text>
+    </view>
+    
+    <view class="category-card" bindtap="navigateToTravel">
+      <image src="/images/attraction.jpg" class="category-bg-image" mode="aspectFill"></image>
+      <view class="card-overlay"></view>
+      <text class="category-name">旅游</text>
+      <text class="category-desc">探索精彩旅行路线</text>
+    </view>
   </view>
+  
+  <!-- 底部装饰元素 -->
+  <!-- <view class="bottom-decor">
+    <view class="dash"></view>
+    <text class="app-name">生活助手小程序</text>
+    <view class="dash"></view>
+  </view> -->
 </view>

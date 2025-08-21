@@ -1,25 +1,89 @@
 // pages/myself/myself.js
+
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isLogin: false,
-    basePhotoUrl: 'https://your-cdn.com/', // 必须定义
-    userInfo: {
-      headPic: '',
-      wwHeadPic: '',
-      username: ''
-    }
+    obj: {},
+    name: ''
+
     
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
+  methods: {
+  },
+  onLoad() {
+    this.setData({
+      obj: getApp().globalData,
+      obj: {
+        imgt: "https://img1.baidu.com/it/u=2205110285,1532881525&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+        name: "暂未登录",
+        userid: "暂未登录"
+      }
+ 
+    })
+  },
+  // 登录
+  bindgetuserinfo(e) {
+    console.log('触发了');
+    wx.getUserProfile({ 
+      success: (res) => {
+        console.log(res, "info");
+        getApp().globalData.imgt = res.userInfo.avatarUrl;
+        getApp().globalData.name = res.userInfo.nickName;
+        this.setData({
+          obj: getApp().globalData
+        })
+        wx.login({
+          success: (res) => {
+            console.log(res.code);
+            // 1. 拿到code发送给后端
+            wx.request({
+              url: 'https://14d154aa440c940335fd24b2ae4087a2/user/wxapp/authorize',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              method: "POST",
+              data: {
+                code: res.code
+              },
+              success: ((res) => {
+                console.log(res, "123");
+                getApp().globalData.userid = res.data.data.openid
+                wx.setStorageSync('token', res.data.data.token)
+                wx.setStorageSync('usert', JSON.stringify(getApp().globalData))
+              })
+            })
+          },
+        })
+      }
+    })
+  },
+ 
+  // 退出登录
+  tuilongin() { 
+    console.log("“退出登录了")
+    wx.removeStorage({
+      key: 'token',
+    })
+    wx.removeStorage({
+      key: 'usert'
+    })
+ 
+    this.setData({
+      obj: {
+        imgt: "https://img1.baidu.com/it/u=2205110285,1532881525&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500",
+        name: "暂未登录",
+        userid: "暂未登录"
+      }
+    })
   },
 
   /**
@@ -70,48 +134,8 @@ Page({
   onShareAppMessage() {
 
   },
-  onLoginTap: function() {
-    wx.getUserProfile({
-      desc: '获取用户相关信息',
-      success: res => {
-        if (res.errMsg === "getUserProfile:ok") {
-          let username = res.userInfo.nickName;
-          let headPic = res.userInfo.avatarUrl;
-          wx.login({
-            success: async res => {
-              if (res.errMsg === "login:ok") {
-                const response = await myRequest ({
-                  url: api.BASE_URL + "/app/user/wx_login",
-                  method:  "POST",
-                  data: {
-                    wxHeadPic: headPic,
-                    wxUsername: username,
-                    code: res.code,
-                  }
-                });
-                if (response.data.code === 0) {
-                  Notify({type: "success", message: response.data.msg, duration: 1000 });
-                  Cache.setCache(getApp().globalDate.SESSION_KEY_LOGIN_USER, response.data.data.token, 3600);
-                  this.setData({
-                    userInfo: response.data.data,
-                    editUser: response.data.data,
-                    isLogin: true,
-                  });
-                } else {
-                  Notify({ type: "danger", message: response.data.msg, duration: 2000 })
-                }
-              } else {
-                wx.showToast({
-                  icon: "error",
-                  title: "登录失败",
-                })
-              }
-            },
-          })
-        }
-      }
-    })
-  },
+  // 登录按钮点击事件
+ 
 
   goToOrderPage: function(e) {
     const tabIndex = e.currentTarget.dataset.tab || 0;
@@ -142,7 +166,12 @@ Page({
     wx.navigateTo({
       url: `/pages/position/position`
     });
+  },
+
+  goToTelePage: function() {
+    wx.navigateTo({
+      url: `/pages/tele/tele`
+    });
   }
 })
-
 

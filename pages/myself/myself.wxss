@@ -12,6 +12,14 @@
   box-sizing: border-box; /* 包含padding */
 }
 
+.my_top_img {
+  float: left;
+  margin-top: 30rpx;
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+}
+
 /* 内容横向排列 */
 .header-content {
   display: flex;

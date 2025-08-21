@@ -1,2 +1,72 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!-- town-intro.wxml -->
+<swiper indicator-dots autoplay interval="3000" style="height: 550rpx"   circular>
+    <swiper-item wx:for="{{swiperImages}}" wx:key="index">
+      <image src="{{item}}" class="swiper-img" mode="aspectFill" />
+    </swiper-item>
+</swiper>
+<!-- <view class="container"> -->
+  <!-- 小镇名称和标语 -->
+  <view class="title-section">
+    <text class="town-name">{{townInfo.name}}</text>
+    <text class="town-slogan">{{townInfo.slogan}}</text>
+  </view>
+
+  <!-- 特色景点卡片 -->
+<!-- 修改后的特色景点部分 -->
+<!-- <view class="section"> -->
+  <!-- <view class="section-header">
+    <image src="/images/icon-scenery.png" class="section-icon" />
+    <text class="section-title">特色景点</text>
+  </view> -->
+  <scroll-view class="card-container" scroll-x="true"  enable-flex>
+    <view class="card" wx:for="{{attractions}}" wx:key="id">
+      <image src="{{item.image}}" class="card-image" />
+      <view class="card-content">
+        <text class="card-title">{{item.name}}</text>
+        <text class="card-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </scroll-view>
+<!-- </view> -->
+
+  <!-- 历史文化 -->
+  <view class="section">
+    <view class="section-header">
+      <image src="/images/icon-history.png" class="section-icon" />
+      <text class="section-title">历史文化</text>
+    </view>
+    <view class="history-container">
+      <image src="{{historyImage}}" class="history-image" />
+      <text class="history-text">{{historyText}}</text>
+    </view>
+  </view>
+
+  <view class="category-container">
+    <view class="category-card" bindtap="navigateToFood">
+      <image src="cloud://linhexing-8gtbgmcq7e198071.6c69-linhexing-8gtbgmcq7e198071-1373744932/images/河东驿栈民宿旅店12.png" class="category-bg-image" mode="aspectFill"></image>
+      <view class="card-overlay"></view>
+      <text class="category-name">美食</text>
+      <text class="category-desc">精选当地特色美食</text>
+    </view>
+    
+    <view class="category-card" bindtap="navigateToHotel">
+      <image src="cloud://linhexing-8gtbgmcq7e198071.6c69-linhexing-8gtbgmcq7e198071-1373744932/images/首页/住宿首页.png" class="category-bg-image" mode="aspectFill"></image>
+      <view class="card-overlay"></view>
+      <text class="category-name">住宿</text>
+      <text class="category-desc">舒适温馨的住宿环境</text>
+    </view>
+    
+    <view class="category-card" bindtap="navigateToTravel">
+      <image src="cloud://linhexing-8gtbgmcq7e198071.6c69-linhexing-8gtbgmcq7e198071-1373744932/images/首页/旅游首页.jpg" class="category-bg-image" mode="aspectFill"></image>
+      <view class="card-overlay"></view>
+      <text class="category-name">旅游</text>
+      <text class="category-desc">探索精彩旅行路线</text>
+    </view>
+  </view>
+
+  <!-- 底部导航 -->
+  <!-- <view class="footer">
+    <button class="contact-btn">联系我们</button>
+    <button class="route-btn">查看路线</button>
+  </view> -->
+<!-- </view> -->

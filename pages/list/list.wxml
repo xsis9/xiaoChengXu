@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="header">
+    <text class="title">{{categoryName}}</text>
+  </view>
+  
+  <scroll-view scroll-y="true" class="scroll-container">
+    <view wx:for="{{goodsList}}" wx:key="id" class="item-card" bindtap="navigateToDetail" data-id="{{item.id}}">
+      <image src="{{item.image}}" class="item-image"></image>
+      <view class="item-info">
+        <text class="item-name">{{item.name}}</text>
+        <!-- <text class="item-price">¥{{item.price}}</text> -->
+        <text class="item-desc">{{item.desc}}</text>
+        <view class="item-tags">
+          <text wx:for="{{item.tags}}" wx:key="index" class="tag">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

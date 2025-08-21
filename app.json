@@ -14,7 +14,10 @@
     "pages/concession/concession",
     "pages/position/position",
     "pages/concession/list",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/list/list",
+    "pages/index/tele/tele",
+    "pages/tele/tele"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -31,18 +34,6 @@
         "text": "首页",
         "iconPath": "images/tabbar/home.png",
         "selectedIconPath": "images/tabbar/home_selected.png"
-      },
-      {
-        "pagePath": "pages/lifehelp/lifehelp",
-        "text": "美食景点",
-        "iconPath": "images/tabbar/lifehelp.png",
-        "selectedIconPath": "images/tabbar/lifehelp_selected.png"
-      },
-      {
-        "pagePath": "pages/shopping/shopping",
-        "text": "购物",
-        "iconPath": "images/tabbar/shopping.png",
-        "selectedIconPath": "images/tabbar/shopping_selected.png"
       },
       {
         "pagePath": "pages/myself/myself",
